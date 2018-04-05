@@ -1,0 +1,326 @@
+\documentclass[12pt]{spieman}  % 12pt font required by SPIE;
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tocloft}
+\usepackage{array}
+
+% Define custom commands
+\makeatletter
+    \newcommand*\rfrac[2]{{}{#1}\!/{#2}}                    % Inline fraction with slash
+    \newcommand{\pO}{\ensuremath{\text{pO}_2}} 	            % pO2 shortcut
+    \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}   % Raised plus/minus sign
+    \newcolumntype{?}[1]{!{\vrule width #1}} 	            % Thick vertical line for table
+\makeatother
+
+
+% ---------------------------------------------------------------------------------------
+% BEGIN TITLE AND AUTHORS
+% ---------------------------------------------------------------------------------------
+\title{Chronic imaging of cortical oxygen tension and blood flow after targeted vascular occlusion}
+
+\author[a]{Colin T. Sullender}
+\author[a]{Andrew E. Mark}
+\author[b,c]{Taylor A. Clark}
+\author[d]{Tatiana V. Esipova}
+\author[d]{Sergei A. Vinogradov}
+\author[b,c]{Theresa A. Jones}
+\author[a,c*]{Andrew K. Dunn}
+\affil[a]{The University of Texas at Austin, Department of Biomedical Engineering, 107 W. Dean Keeton St. Stop C0800, Austin, TX, 78712, USA}
+\affil[b]{The University of Texas at Austin, Department of Psychology, 108 W. Dean Keeton St. Stop A8000, Austin, TX, 78712, USA}
+\affil[c]{The University of Texas at Austin, Institute for Neuroscience, Austin, Texas 78712, USA}
+\affil[d]{University of Pennsylvania, Department of Biochemistry and Biophysics, Philadelphia, PA, 19104, USA}
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN DOCUMENT
+% ----------------------------------------------------------------------------------------
+\renewcommand{\cftdotsep}{\cftnodots}
+\cftpagenumbersoff{figure}
+\cftpagenumbersoff{table}
+\begin{document}
+\maketitle
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN ABSTRACT
+% ----------------------------------------------------------------------------------------
+\begin{abstract}
+We present a dual-modality imaging system combining laser speckle contrast imaging and phosphorescence lifetime quenching to simultaneously measure cortical blood flow and oxygen tension (\pO) in mice. Phosphorescence signal localization is achieved through the use of a digital micromirror device (DMD) that allows for selective excitation of arbitrary regions of interest. By targeting both excitation maxima of the oxygen-sensitive porphyrin Oxyphor PtG4, we are able to examine the effects of wavelength and penetration depth on phosphorescence lifetime. We demonstrate the ability to measure static differences in \pO\ between arteries and veins and large changes during an hyperoxic challenge. We dynamically monitor blood flow and \pO\ during DMD-targeted photothrombotic occlusion of an arteriole and highlight the presence of an ischemia-induced depolarization. Chronic tracking of the ischemic lesion over seven days revealed a rapid recovery, with the targeted vessel fully reperfusing and \pO\ returning to baseline values within five days. This system has broad applications for studying the acute and chronic pathophysiology of ischemic stroke and other vascular diseases of the brain.
+\end{abstract}
+
+% Include a list of up to six keywords after the abstract
+\keywords{laser speckle contrast imaging, oxygen tension, phosphorescence quenching, photothrombosis, ischemic stroke, imaging system}
+
+% Include email contact information for corresponding author
+{\noindent \footnotesize\textbf{*}Andrew K. Dunn \linkable{adunn@utexas.edu}}
+
+\begin{spacing}{2}   % use double spacing for rest of manuscript
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN INTRODUCTION SECTION
+% ----------------------------------------------------------------------------------------
+\section{Introduction}
+\label{sect:introduction}
+
+The measurement of blood flow and oxygen tension in cerebral vasculature is vital for the study of many physiological and pathophysiological conditions in the brain. Laser speckle contrast imaging (LSCI) is a well-established technique for full-field optical imaging of cortical blood flow \cite{Briers:2001hy,Dunn:2001dj,Boas:2010vr,Dunn:2011gi}. \textit{In vivo} measurements of molecular oxygen have historically been made using highly invasive Clarke electrodes that are limited to point measurements outside the vascular lumen \cite{Vovenko:1999be,Tsai:2003cc,Roussakis:2015eu}. Magnetic resonance techniques allow for noninvasive imaging of hemoglobin saturation, but suffer from low spatial resolutions and can only be correlated with free oxygen in the blood \cite{Dunn:2003hg,Liu:2004fp,Hou:2003hb,Liu:2006bt,Roussakis:2015eu}. Oxygen-sensitive porphyrin probes allow for noninvasive, highly sensitive optical oxygenation measurements based on phosphorescence quenching \cite{Vinogradov:2012tda}. While an injection of the probe is required, absolute oxygen tension (\pO) can be directly calculated from the lifetime of the measured phosphorescence decay.
+
+In order to spatially resolve the phosphorescent signal, most lifetime imaging systems utilize intensified exposure-gated cameras \cite{Shonat:2003ia,Sakadzic:2009jo} or laser scanning systems \cite{Yaseen:2009ep,Kazmi:2013ey}, both of which have limitations \cite{Devor:2014ke}. Cameras suffer from poor spatial resolution because of light scattering in tissue while scanning systems lack temporal resolution because each spatial location requires many repeated measurements. The use of a digital micromirror device (DMD) as a spatial light modulator was proposed to overcome these limitations \cite{Ponticorvo:2010uv}. Rather than producing a full image, arbitrary regions of interest could be sequentially targeted for selective excitation. By constraining the phosphorescent signal to only the targeted region, a point detector could be used for acquiring spatially-resolved lifetime data with high sensitivity and temporal resolution.
+
+In this paper we present an update to the system by Ponticorvo and Dunn \cite{Ponticorvo:2010uv} that utilizes a more robust porphyrin probe \cite{Esipova:2011hi} and offers higher spatiotemporal resolutions for both LSCI and phosphorescence lifetime imaging. The system is capable of illuminating either of the phosphorescent probe's excitation maxima, allowing us to examine the relationship between wavelength and \pO. We demonstrate the ability to detect static variations in \pO\ between different types of vasculature and the dynamic monitoring of blood flow and \pO\ during DMD-targeted photothrombotic stroke. We also demonstrate chronic imaging by tracking the response to the ischemic event over several days. This system allows for acute and chronic imaging of relative blood flow and oxygen tension and has broad applications for both basic neuroscience and neuropathophysiology.
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN METHODS SECTION
+% ----------------------------------------------------------------------------------------
+\section{Methods}
+\label{sect:methods}
+
+\subsection{Imaging Instrumentation}
+A schematic of the imaging system is presented in Fig.~\ref{fig:system_schematic}a. Laser speckle contrast imaging (LSCI) of blood flow was performed using a 685 nm laser diode (50 mW, HL6750MG, Thorlabs) illuminating the craniotomy at an oblique angle. Selection of the near-infrared laser diode was limited by the excitation and emission spectra of the oxygen-sensitive phosphorescent probe that dictated dichroic beamsplitter cutoff wavelengths. The scattered laser light was relayed to a CMOS camera (acA1300-60gmNIR, 1280 x 1024 pixels, Basler AG) with 2x magnification and acquired using custom software at 60 frames-per-second with a 5 ms exposure time.
+
+% Figure 1 - System Schematic
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{c}
+            \includegraphics[width=6.25in]{Figure1.pdf}
+        \end{tabular}
+    \end{center}
+    \caption {
+        \label{fig:system_schematic}
+        (a) Schematic of the imaging system. Three diode lasers (445, 532, and 637 nm) are coaligned and coupled with the DMD to provide structured illumination onto a cranial window. A separate 685 nm laser provides oblique illumination for LSCI. A pair of dichroic beamsplitters separate phosphorescence from scattered LSCI laser light for detection. (b) Example of the linear image transformation applied to binary masks for DMD patterning and the resulting projection as imaged using LSCI (Scale bar = 1 mm).
+    }
+\end{figure}
+
+Simultaneously, laser light patterned by the DMD was delivered to the craniotomy to selectively excite the oxygen-sensitive phosphorescent probe. Wavelength has been shown to significantly affect the penetration depth and sampled volume of measurements through surface vasculature \cite{Davis:2011wj}, so two different lasers at 445 nm (200 mW, AixiZ) and 637 nm (250 mW, HL6388MG, Thorlabs) were selected to target the Soret and Q band excitation maxima of the dye \cite{Esipova:2011hi}. Each laser was used independently to collect \pO\ measurements from identical regions of interest for comparison. The 445 nm laser was modulated using an acousto-optic modulator (23080-2-LTD, Neos Technologies) while the 637 nm laser was directly modulated via its driver (LDD400-1P, Wavelength Electronics). Both lasers were modulated to produce 20 $\mu$s pulses of light for time domain lifetime measurements with a 6\% duty cycle and 3 kHz repetition rate using an National Instruments FlexRIO FPGA (NI PXIe-7965R and NI 5781).
+
+The modulated laser light was relayed to and reflected off a DMD for projection onto the craniotomy. A DMD is an optical semiconductor device that consists of a two-dimensional array of thousands of individually addressable mirrors that can be tilted to spatially modulate light. The DMD allows for the localization of phosphorescence measurements while maintaining the high SNR of using a point detector \cite{Ponticorvo:2010uv}. A DLP LightCrafter Evaluation Module (Texas Instruments) was modified to expose the bare DMD (DLP3000, 608 x 684 pixels, 7.6 $\mu$m pitch) for illumination. The projected DMD pattern was co-registered with the LSCI camera via an affine image transformation (Fig.~\ref{fig:system_schematic}b). This allowed for the selection of arbitrarily-shaped regions of interest using speckle contrast imagery for reference. The resulting binary masks were then transformed into DMD coordinate space and uploaded onto the device via its USB-based API. Each pattern was then projected sequentially onto the exposed brain tissue to selectively excite the phosphorescent probe for \pO\ measurements.
+
+The emitted phosphorescence was separated from the excitation light and LSCI laser using a pair of dichroic beamsplitters (650 nm, ZT640rdc, Chroma Technology and 750 nm, FF750-SDi02, Semrock) and a bandpass filter (775$\pm$26 nm, 84-106, Edmund Optics) and relayed to a photomultiplier tube for detection (H7422P-50, Hamamatsu Photonics). The analog signal was digitized at 100 MHz and accumulated by the FPGA for averaging, after which it was transferred to the host computer and written to file. The maximum pattern projection rate and temporal resolution of the \pO\ measurements were limited by the averaging of the phosphorescent decays. In order to balance SNR and speed, patterns were displayed at 10 Hz with 200 decays collected during each projection. While faster pattern rates were possible (e.g. 50 Hz with 40 decays averaged), the reduction in averaging negatively affected the quality of the recorded decays.
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Animal Preparation}
+Mice (CD-1, male, 25-30 g, Charles River) were anesthetized with medical air vaporized isoflurane (2\%) via nose-cone inhalation. Body temperature was maintained at 37 $^\circ$C with a feedback heating pad (DC Temperature Controller, Future Health Concepts). Arterial oxygen saturation, heart rate, and breath rate were monitored via pulse oximetry (MouseOx, Starr Life Sciences). After induction, mice were placed supine in a stereotaxic frame (Narishige Scientific Instrument Lab) and administered carprofen (5 mg/kg, subcutaneous) and dexamethasone (2 mg/kg, intramuscular) to reduce inflammation of the brain during the craniotomy procedure. The scalp was shaved and resected to expose skull between the bregma and lambda cranial coordinates. A thin layer of cyanoacrylate (Vetbond, 3M) was applied to exposed skull to facilitate the adhesion of dental cement during a later step. A 3-4 mm diameter portion of the skull was removed with a dental drill (Ideal Microdrill, 0.8 mm burr, Fine Science Tools) under regular artificial cerebrospinal fluid (sterile, buffered pH 7.4) perfusion. A 5-8 mm round cover glass (\#1.5, World Precision Instruments) was placed over the exposed brain with a layer of artificial cerebrospinal fluid between the two. While applying gentle pressure to the cover glass, a dental cement mixture was deposited along the perimeter, bonding it to the surrounding skull. This process created a sterile, air-tight seal around the craniotomy and allowed for restoration of intracranial pressure. A final layer of cyanoacrylate was applied over the dental cement to further seal the cranial window. Animals were allowed to recover from anesthesia and monitored for cranial window integrity and normal behavior for two weeks prior to imaging. All imaging sessions were conducted using medical air with 1.5\% vaporized isoflurane. All experiments were approved by the Institutional Animal Care and Use Committee (IACUC) at The University of Texas at Austin.
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Laser Speckle Contrast Image Analysis}
+The raw images captured by the camera were converted to speckle contrast images using Eq.~(\ref{eq:speckle_contrast}), where speckle contrast ($K$) is defined as the ratio of the standard deviation ($\sigma_{s}$) to the mean intensity ($\langle{I}\rangle$) within a small region of the image. The full speckle contrast image was calculated using a 7x7-pixel sliding window centered at every pixel of the raw image and was computed, displayed, and saved in real-time using an efficient processing algorithm in custom software \cite{Tom:2008tg}.
+
+% Equation 1 - Speckle Contrast
+\begin{equation}
+    \label{eq:speckle_contrast}
+    K = \frac{\sigma_{s}}{\langle{I}\rangle}
+\end{equation}
+
+During post-processing, speckle contrast images were averaged together ($n = 45$) and converted to inverse correlation time ($\rfrac{1}{\tau_{c}}$) to provide a more quantitative measure of blood flow \cite{Briers:2001hy}. The observed speckle contrast value ($K$) was fitted for its corresponding correlation time ($\tau_{c}$) at each pixel using Eq.~(\ref{eq:bandyopadhyay}), where $x = \rfrac{T}{\tau_{c}}$ \cite{Bandyopadhyay:2005bg}. $T$ is the camera exposure duration (5 ms) and $\beta$ is an instrumentation factor that accounts for speckle sampling, polarization, and coherence effects.
+
+% Equation 2 - Bandyopadhyay Equation
+\begin{equation}
+    \label{eq:bandyopadhyay}
+    K(T,\tau_{c}) = \bigg(\beta \frac{e^{-2x} - 1 + 2x}{2x^{2}}\bigg)^{1/2}
+\end{equation}
+
+Each inverse correlation time sequence was then baselined against the first frame to calculate an estimate of relative change in blood flow ($\rfrac{\tau_{c,initial}}{\tau_{c,current}}$) \cite{Kazmi:2015du}. Because $\beta$ is a property of the instrumentation and should not vary throughout the course of an experiment, it was assumed $\beta = 1$. The same regions of interest defined for DMD structured illumination were then used to calculate timecourses of the relative change in flow.
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Oxygen Tension Measurements}
+Oxyphor PtG4 is an oxygen-sensitive dendritic probe that contains Platinum(II)-meso-tetra-(3,5-dicarboxyphenyl)tetrabenzoporphyrin as the phosphorescent core \cite{Lebedev:2009cf,Esipova:2011hi} and has been effectively used to measure absolute oxygen tension using phosphorescence quenching \cite{Zhang:2013cd,Holt:2014cy}. It has excitation maxima near 435 nm and 623 nm and an emission maximum at 782 nm (Fig.~\ref{fig:oxyphor_ptg4}a). Unlike previous generations of the Oxyphor probe, PtG4 is highly soluble in an aqueous environment without requiring the presence of environmental albumin for stabilization \cite{Esipova:2011hi}. For \textit{in vivo} measurements, Oxyphor PtG4 was introduced systemically via retro-orbital injection into the venous sinus for a target blood plasma concentration of 5 $\mu$M. Phosphorescence lifetime measurements were made in the time domain using the structured pulsed excitation light paradigm described above. The instrument response was accounted for by introducing a 2 $\mu$s temporal offset to the phosphorescent signal [$I(t)$] prior to fitting for the decay lifetime ($\tau$) in Eq.~(\ref{eq:phosphorescence}).
+
+% Equation 3 - Phosphorescence Decay Equation
+\begin{equation}
+    \label{eq:phosphorescence}
+    I(t) = A + Be^{-\rfrac{t}{\tau}}
+\end{equation}
+
+A calibration curve based on Stern-Volmer kinetics \cite{Vanderkooi:1986hs,Wilson:2003ek} was used to convert the measured lifetime ($\tau$) to the absolute \pO. The calibration of Oxyphor PtG4 under physiological conditions is shown in Fig.~\ref{fig:oxyphor_ptg4}b. The unquenched lifetime is 47 $\mu$s in an oxygen-free environment. Fig.~\ref{fig:oxyphor_ptg4}c depicts phosphorescent decay curves and their corresponding \pO\ values within anoxic and normoxic cuvette environments with 10 $\mu$M Oxyphor PtG4. Anoxia was established using the enzymatic reaction between glucose and glucose oxidase to scavenge oxygen from a sealed cuvette \cite{Lo:1997he}. Lifetime measurements and therefore \pO\ values did not vary with excitation wavelength.
+
+% Figure 2 - Oxyphor PtG4
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{c}
+            \includegraphics[width=6.25in]{Figure2.pdf}
+        \end{tabular}
+    \end{center}
+    \caption {
+        \label{fig:oxyphor_ptg4}
+        (a) Excitation and emission spectra for Oxyphor PtG4. Dashed vertical lines indicate excitation lasers at 445 nm and 637 nm. (b) Calibration curve relating \pO\ to the measured phosphorescence lifetime ($\tau$) under physiological conditions (37 $^\circ$C, pH 7.2). (c) Phosphorescent decay curves in anoxic and normoxic environments with fitted lifetimes and their corresponding \pO\ values.
+    }
+\end{figure}
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Hyperoxic Challenge}
+In order to demonstrate the ability to detect systemic changes in oxygen tension, mice were subjected to a hyperoxic challenge. The oxygen fraction of inspired air under anesthesia was increased from 21\% (normoxia) to 100\% and then decreased back to 21\% for recovery. Hyperoxia was maintained for five minutes and vascular \pO\ measurements were acquired at the end of each stage. Pulse oximetry was used to monitor the status of the animal throughout the hyperoxic challenge.
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Targeted Photothrombosis}
+The DMD was also used to induce arbitrarily-shaped photothrombotic occlusions in the cortical vasculature using rose bengal. Rose bengal is a fast-clearing photothrombotic agent that photochemically triggers localized clot formation upon irradiation with green light \cite{Watson:1985bp,Klaassen:1976kg,Wilson:1991tv}. Structured illumination with the DMD allows for the selective targeting of individual vessels for occlusion while minimizing exposure in the surrounding parenchyma. Rose bengal was injected intravenously (50 $\mu$L, 15 mg/mL) and the target vessels exposed to DMD-patterned 532 nm laser light for 5 - 10 minutes. Descending arterioles were the primary targets because they serve as bottlenecks in the cortical oxygen supply \cite{Nishimura:2007hk}. Oxygen tension measurements were restricted when performing photothrombosis to the region being targeted for occlusion. Real-time LSCI was used to monitor clot formation within the targeted area and control the progression of the occlusion.
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN RESULTS SECTION
+% ----------------------------------------------------------------------------------------
+\section{Results}
+\label{sect:results}
+
+\subsection{Static Oxygen Tension}
+Static oxygen tension measurements in the neurovasculature of the mouse cortex are shown in Fig. 3. Five different regions including two arterioles, two veins, and an area of unresolvable vasculature (parenchyma) were targeted for selective illumination using both the 445 nm and 637 nm excitation lasers (Fig.~\ref{fig:static_oxygen}a). The calculated \pO\ within each region aligns well with physiological expectations as both arterioles have higher \pO\ than the venous or parenchymal areas (Fig.~\ref{fig:static_oxygen}b). The effects of wavelength can be seen as 445 nm excitation resulted in a broader range of oxygen tension values (48 - 83 mmHg) compared to 637 nm excitation (75 - 82 mmHg). Despite differences in absolute value, similar trends can be seen between each of the targeted regions with both excitation wavelengths.
+
+In order to obtain a more comprehensive look at vascular oxygenation within the LSCI field of view, an array of 12x8 rectangular tiles was sequentially projected. The resulting \pO\ maps (Fig.~\ref{fig:static_oxygen}c, d) coarsely follow the visible surface vasculature. As expected, the large branching vein has lower \pO\ values compared to the descending arteriole approaching from the bottom or the surrounding parenchyma. 445 nm excitation again results in a wider range of \pO\ values (45 - 85 mmHg) compared to 637 nm excitation (81 - 85 mmHg).
+
+% Figure 3 - Static Oxygen Tension
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{c}
+            \includegraphics[width=6.25in]{Figure3.pdf}
+        \end{tabular}
+    \end{center}
+    \caption {
+        \label{fig:static_oxygen}
+        All scale bars = 1 mm. (a) Speckle contrast image of cortical flow overlaid with regions targeted for \pO\ measurements. Two descending arterioles (A1, A2), two veins (V1, V2), and one parenchyma region (P1) were examined. The projected patterns ranged between 0.014 - 0.046 mm$^2$ in area. (b) \pO\ measurements within the targeted regions conducted using both 445 nm and 637 nm excitation of Oxyphor PtG4 (mean $\pm$ s.d.). (c) 445 nm and (d) 637 nm \pO\ maps produced using tiled excitation patterns covering a 1.2 x 1.0 mm area. Each individual tile has a projected area of 0.012 mm$^2$.
+    }
+\end{figure}
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Hyperoxic Challenge}
+The ability to detect changes in neurovascular oxygen tension was tested using an hyperoxic challenge as shown in Fig.~\ref{fig:hyperoxic_challenge}. Three regions covering an arteriole, venule, and parenchyma were targeted for selective 445 nm illumination (Fig.~\ref{fig:hyperoxic_challenge}a) as the oxygen fraction was temporarily increased. Measurements were taken during each stage of the challenge and detected a large increase in \pO\ during the hyperoxic state across all three regions (Fig.~\ref{fig:hyperoxic_challenge}b) with the arteriole experiencing the largest net increase. The \pO\ remained slightly elevated above baseline values several minutes later during the post-hyperoxia recovery stage.
+
+% Figure 4 - Hyperoxic Challenge
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{c}
+            \includegraphics[width=6.25in]{Figure4.pdf}
+        \end{tabular}
+    \end{center}
+    \caption {
+        \label{fig:hyperoxic_challenge}
+        Scale bar = 1 mm. (a) Speckle contrast image depicting three regions (arteriole, venule, and parenchyma) targeted for 445 nm oxygen tension measurements during an hyperoxic challenge. (b) Static \pO\ during baseline, hyperoxic, and recovery stages for each of the targeted vessels (mean $\pm$ s.d.).
+    }
+\end{figure}
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Oxygen Tension and Blood Flow during Photothrombosis}
+Targeted photothrombosis within a descending arteriole can be seen in the series of speckle contrast images in Fig.~\ref{fig:photothrombosis}a. The red overlay in the first frame depicts the 0.09 mm$^{2}$ region illuminated with DMD-targeted 532 nm light for 420 seconds. The remaining frames depict the progression of the photothrombotic occlusion as the targeted vessel undergoes stenosis and flow is significantly reduced. After two minutes of exposure, the occluded area is indistinguishable from the surrounding parenchyma.
+
+Fig.~\ref{fig:photothrombosis}b depicts the five regions targeted for continuous relative blood flow and \pO\ measurements. The first arteriole region (A1) is the same vessel targeted for photothrombotic occlusion. The resulting timecourses of relative blood flow and \pO\ within each region can be seen in Fig.~\ref{fig:photothrombosis}c. By $t = 120$ s, relative flow within the targeted arteriole decreased to \textless50\% of baseline and \pO\ fell from 80 mmHg to only 20 mmHg. The propagation of an ischemia-induced depolarization event \cite{Shin:2006dc,Dreier:2011gz} can be seen beginning at $t = 300$ s with sharp reductions in both relative flow and \pO. As the depolarization subsided, flow within the targeted arteriole further decreased to \textless35\% of baseline while the \pO\ returned to pre-depolarization levels around 20 mmHg.
+
+Both relative blood flow and \pO\ decreased over the remainder of the imaging session across all regions but the targeted arteriole. At $t = 860$ s, the vessel partially reperfused, causing a sudden increase in both relative blood flow (+6 percentage points) and \pO\ (+15 mmHg). By the end of the imaging session, relative blood flow had increased to 55\% of baseline and \pO\ to 42 mmHg, likely indicated further vessel reperfusion.
+
+% Figure 5 - Photothrombosis
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{c}
+            \includegraphics[width=6.25in]{Figure5.pdf}
+        \end{tabular}
+    \end{center}
+    \caption {
+        \label{fig:photothrombosis}
+        Scale bars = 1 mm. (a) Speckle contrast images depicting the occlusion of a descending arteriole using DMD-targeted photothrombosis. The red overlay indicates the 0.09 mm$^{2}$ region simultaneously targeted for occlusion and \pO\ measurements. (b) Two arterioles (A1, A2), one vein (V1), and two parenchyma regions (P1, P2) were targeted for \pO\ measurements after 420 s of irradiation with green light. (c) Relative blood flow and \pO\ within the targeted regions during and after photothrombosis induction. The arrow indicates the propagation of an ischemia-induced depolarization event.
+    }
+\end{figure}
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Chronic Imaging of Oxygen Tension and Blood Flow}
+
+The chronic progression of the ischemia was tracked for eight days following photothrombosis. The perfusion of the occluded arteriole and broader effect on cortical flow was tracked using LSCI as shown in Fig.~\ref{fig:chronic}a. Tiled \pO\ maps acquired using both 445 nm and 637 nm excitation reveal the spatial extent of the oxygen deficit (Fig.~\ref{fig:chronic}b, c). The same five regions used during photothrombosis were targeted for chronic relative blood flow and \pO\ measurements (Fig.~\ref{fig:chronic}d-f). Relative blood flow was baselined against the pre-stroke (Day -0) measurements.
+
+The first post-stroke measurements (Day +0) were taken immediately after the induction of photothrombosis and reveal global deficits in both blood flow and \pO. Over the next two days, the targeted arteriole partially reperfused and the infarct was localized to the surrounding area. By Day +5, the vessel fully reperfused and \pO\ measurements returned to near baseline levels.
+
+% Figure 6 - Chronic Imaging
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{c}
+            \includegraphics[width=6.25in]{Figure6.pdf}
+        \end{tabular}
+    \end{center}
+    \caption {
+        \label{fig:chronic}
+        Scale bars = 1 mm. Progression of the ischemic lesion over eight days as imaged with (a) LSCI, (b) 445 nm tiled \pO, and (c) 637 nm tiled \pO\ measurements. Day -0 measurements were taken immediately prior to photothrombosis induction and Day +0 measurements were taken immediately after. (d) Two arterioles (A1, A2), one vein (V1), and two parenchyma regions (P1, P2) were targeted for chronic (e) relative blood flow and (f) 445 nm \pO\ measurements (mean $\pm$ s.d.). The relative blood flow was baselined against Day -0 measurements.
+    }
+\end{figure}
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN DISCUSSION SECTION
+% ----------------------------------------------------------------------------------------
+\section{Discussion}
+\label{sect:discussion}
+
+The combination of laser speckle contrast imaging and phosphorescence lifetime imaging is a purely optical, non-contact strategy for measuring blood flow and oxygen tension within the cortex. This system builds upon prior work that used structured illumination to overcome traditional limitations of lifetime imaging \cite{Ponticorvo:2010uv}. Spatially patterning excitation light with a DMD allows for the use of a point detector, which offers both high sensitivity and temporal resolution for the detection of the phosphorescence. Functionally, the spatial and temporal resolution of the system are limited by the signal-to-noise. Regions as small as 0.01 mm$^{2}$ can reliably be excited at a pattern repetition rate of 10 Hz with 200 phosphorescence decay curves collected and averaged per pattern. Because intensity of the excitation light scales with the size of the target area, larger regions could allow for faster pattern rates at the expense of averaging (e.g. 100Hz with 20-decay averaging). However, a 10 Hz pattern rate is more than sufficient for visualizing dynamic physiological events such as depolarizations, which have been reported to spread spatially at a rate of several millimeters-per-minute \cite{Lauritzen:1994vs}.
+
+The comparison of excitation wavelengths revealed significant differences in measured oxygen tension. Static \pO\ measurements under 445 nm illumination spanned a range five times larger than that of 637 nm illumination. This discrepancy was most noticeable in venous regions, with the shorter excitation wavelength resulting in \pO\ values around 50 mmHg whereas the longer wavelength resulted in values around 75 mmHg. Since depth penetration is heavily dependent upon wavelength\cite{Deng:2003kb,Davis:2011wj}, the difference is likely caused by excitation photons sampling a much larger volume of tissue under 637 nm illumination. The 445 nm light is more confined within the targeted vessel and does not sample as much of the surrounding parenchyma or deeper microvasculature. Because the 637 nm light penetrates further into the brain, the measured \pO\ is skewed away from the actual vascular value and is more representative of a bulk volumetric average. Despite this discrepancy, similar trends can be seen between the regions for both wavelengths with arterioles having higher \pO\ than veins or parenchyma.
+
+Targeted photothrombosis to create an extended occlusion within an arteriole was demonstrated for the first time. Previous methods relied upon broad illumination to occlude a large volume of vasculature \cite{Watson:1985bp} or highly focused light to occlude a single part of a microvessel \cite{Schaffer:2006fb}. The previous iteration of this system could only induce occlusions within a large region and \pO\ measurements could not be simultaneously acquired \cite{Ponticorvo:2010uv}. While photothrombosis is widely utilized, there is evidence it does not produce pathophysiologically relevant ischemic lesions \cite{Carmichael:2005gk}. This system allows for greater control over the spatial characteristics of the stroke including size and location and possesses the ability to target the entirety of individual vessels or even multiple vessels simultaneously.
+
+While tissue \pO\ during ischemic depolarizations has been previously examined \cite{vonBornstadt:2015dj}, to our knowledge no studies have quantified the acute vascular response to a depolarization event or the chronic response to an ischemic infarct. The depolarization results in a global flow reduction across all regions, which is consistent with previous reports using other stroke models \cite{Shin:2006dc,Nakamura:2010wp}. Within the targeted arteriole, the blood flow reduction is of greater magnitude (-58\%) than the corresponding decrease in \pO\ (-44\%), which eventually recovers to slightly above pre-depolarization levels. Unfortunately it is difficult to predict exactly how the \pO\ responded to the depolarization across the other regions, but it likely mirrored the LSCI results.
+
+The chronic measurements reveal a severe post-stroke blood flow and oxygen deficit that recovers almost completely within five days. The spatial extent of the ischemia can be clearly seen on Days +1 and +2 in both the speckle contrast imagery and tiled \pO\ maps. The large gradient between the occluded vessel and surrounding tissue resembles the ischemic penumbra that the photothrombotic technique rarely produces \cite{Carmichael:2005gk}. By Day +5, the targeted vessel appears to have fully reperfused and there is no evidence of hypoxia in the tiled \pO\ measurements. The speed of this recovery is faster than previously reported \cite{Schrandt:2015gu}, but can likely be explained by the smaller area illuminated for photothrombosis that resulted in a less severe lesion.
+
+
+% ----------------------------------------------------------------------------------------
+
+\subsection{Limitations}
+A potential concern for this system is the scattering of light beyond the desired region of interest when performing the \pO\ measurements or targeted photothrombosis. This problem is highlighted by the discrepancies seen in \pO\ values under 445 nm and 637 nm illumination and introduces the risk of collateral tissue damage during photothrombosis. The wavelength dependence of light propagation also means the LSCI and \pO\ measurements sample different volumes of tissue. The use of anesthesia during imaging significantly affects systemic hemodynamics \cite{Janssen:2004ih} and has been shown to inhibit the oxygen autoregulatory response \cite{Aksenov:2012wh}. The implementation of an awake imaging setup \cite{Dombeck:2007gr} would resolve this issue by completely eliminating the need for anesthesia during imaging. Another concern is that estimates of blood flow provided by single-exposure speckle imaging have limited utility for chronic imaging or cross-animal comparisons \cite{Kazmi:2013hp}. An enhanced technique known as Multi-Exposure Speckle Imaging (MESI) has been developed to increase the quantitative accuracy of flow measurements \cite{Parthasarathy:2008el}. Implementing MESI would allow for more robust chronic measurements of blood flow in the ischemic brain.
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN CONCLUSION SECTION
+% ----------------------------------------------------------------------------------------
+\section{Conclusion}
+\label{sect:conclusion}
+We have presented an imaging system capable of simultaneously measuring relative cerebral blood flow and vascular oxygen tension at higher spatiotemporal resolutions than its predecessor. We demonstrated the ability to perform targeted \pO\ measurements \textit{in vivo} using both 445 nm and 637 nm illumination. The discrepancy in \pO\ values between the two wavelengths highlighted the influence of penetration depth on single-photon phosphorescence measurements. We also demonstrated the induction of a DMD-targeted photothrombotic stroke within a single vessel and imaged blood flow and oxygen tension during a subsequent ischemic depolarization. Chronic imaging revealed a rapid recovery, with the occluded vessel fully reperfusing and the \pO\ returning to baseline levels within only five days. This system will have broad applications for studying the progression of ischemic stroke and other pathophysiological conditions in the brain.
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN DISCLOSURES AND ACKNOWLEDGEMENTS
+% ----------------------------------------------------------------------------------------
+\subsection*{Disclosures}
+No conflicts of interest, financial or otherwise, are declared by the authors.
+
+\acknowledgments
+This study was supported by the National Institutes of Health (EB011556, NS078791, NS082518) and the American Heart Association (14EIA8970041).
+
+
+% ----------------------------------------------------------------------------------------
+% BEGIN BIBLIOGRAPHY
+% ----------------------------------------------------------------------------------------
+\bibliography{bibliography.bib}
+\bibliographystyle{spiejour} % SPIE bibliography style
+
+
+% ----------------------------------------------------------------------------------------
+% AUTHOR BIOGRAPHIES
+% ----------------------------------------------------------------------------------------
+\vspace{1ex}
+\vspace{2ex}\noindent\textbf{Colin T. Sullender} received his B.S. in Bioengineering from the University of Washington in 2011 and his M.S.E. in Biomedical Engineering from the University of Texas at Austin in 2016. He is currently a doctoral candidate in the Department of Biomedical Engineering at the University of Texas at Austin working in Dr. Andrew Dunn's Functional Optical Imaging Laboratory.
+
+\vspace{2ex}\noindent\textbf{Taylor A. Clark} received her B.S. in Psychology from the University of California, Los Angeles in 2013. She is currently a doctoral candidate in the Department of Neuroscience at the University of Texas at Austin working in Dr. Theresa Jones' behavioral neuroscience laboratory.
+
+\vspace{2ex}\noindent\textbf{Theresa A. Jones} is a professor in the Department of Psychology at the University of Texas at Austin. Her research focuses on the plasticity of neural structure and synaptic connectivity following brain damage and during skill learning.
+
+\vspace{2ex}\noindent\textbf{Andrew K. Dunn} is the Donald J. Douglass Centennial Professor of Engineering in the Department of Biomedical Engineering at the University of Texas at Austin. His research focuses on the development of novel optical imaging techniques for studying the brain.
+
+\vspace{1ex}
+\noindent Biographies of the other authors and photographs are not available.
+
+
+% ----------------------------------------------------------------------------------------
+% FIGURE AND TABLE LISTS
+% ----------------------------------------------------------------------------------------
+\listoffigures
+\listoftables
+
+\end{spacing}
+\end{document}
+
+% ----------------------------------------------------------------------------------------
+% END
+% ----------------------------------------------------------------------------------------

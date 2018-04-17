@@ -7,3 +7,4 @@ _© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova
 ## Revision History
 
 * 2018-04-05: [First Draft (v1.0)](https://github.com/shiruken/chronic-imaging-of-cortical-oxygen-tension-and-blood-flow-after-targeted-vascular-occlusion/files/1881921/article.pdf) - Sent to Andy for revision
+* 2018-04-16: [Second Draft (v1.1)](https://github.com/shiruken/chronic-imaging-of-cortical-oxygen-tension-and-blood-flow-after-targeted-vascular-occlusion/files/1917847/article.pdf) - Sent to Andy for revision

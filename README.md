@@ -1,4 +1,4 @@
-# Chronic imaging of cortical oxygen tension and blood flow after targeted vascular occlusion
+# Imaging of cortical oxygen tension and blood flow following targeted photothrombotic stroke
 
 [LaTeX](https://foil.bme.utexas.edu/) code for my paper submitted to the [SPIE](https://spie.org/) journal [_Neurophotonics_](https://www.spiedigitallibrary.org/journals/neurophotonics) detailing the dual-modality imaging system developed during graduate school at the University of Texas at Austin in the [Functional Optical Imaging Laboratory](http://foil.bme.utexas.edu/) ([@UTFOIL](https://github.com/utfoil)).
 

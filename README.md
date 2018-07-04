@@ -11,3 +11,4 @@ _© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova
 * 2018-04-24: [Third Draft (v1.2)](https://github.com/shiruken/chronic-imaging-of-cortical-oxygen-tension-and-blood-flow-after-targeted-vascular-occlusion/files/1944414/article.pdf) - Sent to Andy and Taylor for revision
 * 2018-04-27: [Submitted Manuscript (v2.0)](https://github.com/shiruken/chronic-imaging-of-cortical-oxygen-tension-and-blood-flow-after-targeted-vascular-occlusion/files/1956802/article.pdf) - Submitted to _Neurophotonics_
 * 2018-06-26: [Revised Manuscript (v3.0)](https://github.com/shiruken/imaging-of-cortical-oxygen-tension-and-blood-flow-following-targeted-photothrombotic-stroke/files/2139126/article.pdf) - Submitted to _Neurophotonics_
+* 2018-07-02: Manuscript accepted for publication in _Neurophotonics_

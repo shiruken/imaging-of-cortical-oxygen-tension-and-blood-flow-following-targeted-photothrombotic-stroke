@@ -4,7 +4,9 @@
 
 [LaTeX](https://www.latex-project.org/) source code for [my paper](https://doi.org/10.1117/1.NPh.5.3.035003) in the [SPIE](https://spie.org/) journal [_Neurophotonics_](https://www.spiedigitallibrary.org/journals/neurophotonics) detailing the dual-modality imaging system developed during graduate school at the University of Texas at Austin in the [Functional Optical Imaging Laboratory](https://foil.bme.utexas.edu/) ([@UTFOIL](https://github.com/utfoil)).
 
-_© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova, Sergei A. Vinogradov, Theresa A. Jones, and Andrew K. Dunn_
+https://doi.org/10.1117/1.NPh.5.3.035003
+
+> Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova, Sergei A. Vinogradov, Theresa A. Jones, Andrew K. Dunn, "Imaging of cortical oxygen tension and blood flow following targeted photothrombotic stroke," Neurophoton. 5(3), 035003 (2018), doi: 10.1117/1.NPh.5.3.035003.
 
 ## Revision History
 
@@ -16,4 +18,4 @@ _© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova
 * 2018-07-02: Manuscript accepted for publication in _Neurophotonics_
 * 2017-07-27: Paper published in _Neurophotonics_ and available as an [open access article on the SPIE Digital Library](https://doi.org/10.1117/1.NPh.5.3.035003)
 
-> Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova, Sergei A. Vinogradov, Theresa A. Jones, Andrew K. Dunn, "Imaging of cortical oxygen tension and blood flow following targeted photothrombotic stroke," Neurophoton. 5(3), 035003 (2018), doi: 10.1117/1.NPh.5.3.035003.
+_© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova, Sergei A. Vinogradov, Theresa A. Jones, and Andrew K. Dunn_

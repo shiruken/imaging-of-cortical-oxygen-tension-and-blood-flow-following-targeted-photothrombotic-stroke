@@ -2,7 +2,7 @@
 
 # Imaging of cortical oxygen tension and blood flow following targeted photothrombotic stroke
 
-[LaTeX](https://foil.bme.utexas.edu/) code for my paper in the [SPIE](https://spie.org/) journal [_Neurophotonics_](https://www.spiedigitallibrary.org/journals/neurophotonics) detailing the dual-modality imaging system developed during graduate school at the University of Texas at Austin in the [Functional Optical Imaging Laboratory](http://foil.bme.utexas.edu/) ([@UTFOIL](https://github.com/utfoil)).
+[LaTeX](https://foil.bme.utexas.edu/) source code for my paper in the [SPIE](https://spie.org/) journal [_Neurophotonics_](https://www.spiedigitallibrary.org/journals/neurophotonics) detailing the dual-modality imaging system developed during graduate school at the University of Texas at Austin in the [Functional Optical Imaging Laboratory](http://foil.bme.utexas.edu/) ([@UTFOIL](https://github.com/utfoil)).
 
 _© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova, Sergei A. Vinogradov, Theresa A. Jones, and Andrew K. Dunn_
 
@@ -14,3 +14,4 @@ _© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova
 * 2018-04-27: [Submitted Manuscript (v2.0)](https://github.com/shiruken/chronic-imaging-of-cortical-oxygen-tension-and-blood-flow-after-targeted-vascular-occlusion/files/1956802/article.pdf) - Submitted to _Neurophotonics_
 * 2018-06-26: [Revised Manuscript (v3.0)](https://github.com/shiruken/imaging-of-cortical-oxygen-tension-and-blood-flow-following-targeted-photothrombotic-stroke/files/2139126/article.pdf) - Submitted to _Neurophotonics_
 * 2018-07-02: Manuscript accepted for publication in _Neurophotonics_
+* 2017-07-27: Paper published in _Neurophotonics_ and available as an [open access article on the SPIE Digital Library](https://doi.org/10.1117/1.NPh.5.3.035003)

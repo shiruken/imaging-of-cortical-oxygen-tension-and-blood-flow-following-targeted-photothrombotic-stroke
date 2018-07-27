@@ -15,3 +15,5 @@ _© 2018 Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova
 * 2018-06-26: [Revised Manuscript (v3.0)](https://github.com/shiruken/imaging-of-cortical-oxygen-tension-and-blood-flow-following-targeted-photothrombotic-stroke/files/2139126/article.pdf) - Submitted to _Neurophotonics_
 * 2018-07-02: Manuscript accepted for publication in _Neurophotonics_
 * 2017-07-27: Paper published in _Neurophotonics_ and available as an [open access article on the SPIE Digital Library](https://doi.org/10.1117/1.NPh.5.3.035003)
+
+> Colin T. Sullender, Andrew E. Mark, Taylor A. Clark, Tatiana V. Esipova, Sergei A. Vinogradov, Theresa A. Jones, Andrew K. Dunn, "Imaging of cortical oxygen tension and blood flow following targeted photothrombotic stroke," Neurophoton. 5(3), 035003 (2018), doi: 10.1117/1.NPh.5.3.035003.
